@@ -1,6 +1,9 @@
 import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
+
+const tasks = ["counter", "converter", "timer", "flight", "crud", "circle", "cells"];
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -8,17 +11,14 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
-        counterReact: resolve(__dirname, "src/7guisHtml/counter.html"),
-        converterReact: resolve(__dirname, "src/7guisHtml/converter.html"),
-        flightReact: resolve(__dirname, "src/7guisHtml/flight.html"),
-        timerReact: resolve(__dirname, "src/7guisHtml/timer.html"),
-        crudReact: resolve(__dirname, "src/7guisHtml/crud.html"),
-        circleReact: resolve(__dirname, "src/7guisHtml/circle.html"),
-        cellsReact: resolve(__dirname, "src/7guisHtml/cells.html"),
+        ...Object.fromEntries(
+          tasks.map((t) => [t, resolve(__dirname, `src/html/${t}.html`)])
+        ),
       },
     },
   },
   plugins: [
+    tailwindcss(),
     react({
       babel: {
         plugins: [["babel-plugin-react-compiler"]],

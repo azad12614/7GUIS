@@ -1,31 +1,7 @@
-body {
-  font-family: "Times New Roman", Times, serif;
-  line-height: 1.5;
-  background-color: #000000;
-}
+@import "tailwindcss";
 
-.canvas {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
-button {
-  padding: 8px 16px;
-  font-size: 1em;
-  font-weight: normal;
-  color: #14213d;
-  background-color: #e5e5e5;
-  box-shadow: #000000;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:disabled {
-  color: #000000;
-  background-color: gray;
+@theme {
+  --color-orange: #fca311;
+  --color-blue: #14213d;
+  --color-light: #e5e5e5;
 }
