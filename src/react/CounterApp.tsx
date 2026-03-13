@@ -8,7 +8,7 @@ function Counter() {
       <div className="text-[2em] font-bold text-orange">{value}</div>
       <button
         className="px-3 py-1.5 text-blue bg-light border-none rounded-[5px] cursor-pointer disabled:text-black disabled:bg-gray-400"
-        onClick={() => setValue(value + 1)}
+        onClick={() => setValue((prev) => prev + 1)}
       >
         Count
       </button>
