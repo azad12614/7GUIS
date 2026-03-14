@@ -2,8 +2,8 @@ import { useState } from "react";
 
 function Converter() {
   const [temperature, setTemperature] = useState({
-    celsius: "",
-    fahrenheit: "",
+    celsius: "0",
+    fahrenheit: "32",
   });
 
   const updateFahrenheit = (e: React.ChangeEvent<HTMLInputElement>) => {

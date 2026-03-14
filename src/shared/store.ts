@@ -1,3 +1,5 @@
+import type { TemperatureState } from "./types";
+
 export const counterStore: {
   counter: number;
   listeners: (() => void)[];
@@ -25,8 +27,6 @@ export const counterStore: {
   },
 };
 
-type TemperatureState = { celsius: number; fahrenheit: number };
-
 export const temperatureStore: {
   state: TemperatureState;
   listeners: (() => void)[];
@@ -34,7 +34,7 @@ export const temperatureStore: {
   setState(newState: Partial<TemperatureState>): void;
   subscribe(listener: () => void): () => void;
 } = {
-  state: { celsius: 0, fahrenheit: 32 },
+  state: { celsius: "0", fahrenheit: "32" },
   listeners: [],
 
   getState() {

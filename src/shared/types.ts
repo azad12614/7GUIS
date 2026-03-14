@@ -3,3 +3,5 @@ export interface Circle {
   y: number;
   r: number;
 }
+
+export type TemperatureState = { celsius: string; fahrenheit: string };

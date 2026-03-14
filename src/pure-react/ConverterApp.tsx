@@ -3,14 +3,21 @@ import { temperatureStore } from "../shared/store";
 
 const ShowCelsius = () => {
   const celsius = useSyncExternalStore(
-    (lisenter) => temperatureStore.subscribe(lisenter),
+    (listener) => temperatureStore.subscribe(listener),
     () => temperatureStore.getState().celsius,
   );
 
   const updateFahrenheit = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Number(e.target.value);
-    const fahrenheitValue = parseFloat(e.target.value) * (9 / 5) + 32;
-    temperatureStore.setState({ celsius: value, fahrenheit: fahrenheitValue });
+    const value = e.target.value;
+    if (value !== "") {
+      const fahrenheitValue = parseFloat(value) * (9 / 5) + 32;
+      temperatureStore.setState({
+        celsius: value,
+        fahrenheit: fahrenheitValue.toFixed(2),
+      });
+    } else {
+      temperatureStore.setState({ celsius: value, fahrenheit: "" });
+    }
   };
 
   return (
@@ -18,7 +25,7 @@ const ShowCelsius = () => {
       <input
         type="number"
         className="w-full px-3 py-1.5 text-blue bg-light border-none rounded-[10px]"
-        value={String(celsius)}
+        value={celsius}
         onChange={updateFahrenheit}
       />
       Celsius
@@ -28,14 +35,21 @@ const ShowCelsius = () => {
 
 const ShowFahrenheit = () => {
   const fahrenheit = useSyncExternalStore(
-    (lisenter) => temperatureStore.subscribe(lisenter),
+    (listener) => temperatureStore.subscribe(listener),
     () => temperatureStore.getState().fahrenheit,
   );
 
   const updateCelsius = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Number(e.target.value);
-    const celsiusValue = (parseFloat(e.target.value) - 32) * (5 / 9);
-    temperatureStore.setState({ celsius: celsiusValue, fahrenheit: value });
+    const value = e.target.value;
+    if (value !== "") {
+      const celsiusValue = (parseFloat(value) - 32) * (5 / 9);
+      temperatureStore.setState({
+        celsius: celsiusValue.toFixed(2),
+        fahrenheit: value,
+      });
+    } else {
+      temperatureStore.setState({ celsius: "", fahrenheit: value });
+    }
   };
 
   return (
