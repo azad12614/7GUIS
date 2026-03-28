@@ -32,34 +32,30 @@ function Converter() {
   };
 
   return (
-    <>
-      <p className="text-light">
+    <div className="flex flex-col gap-4 items-center">
+      <label className="flex items-center gap-3">
         <input
           type="number"
-          className="w-full px-3 py-1.5 text-blue bg-light border-none rounded-[10px]"
+          className="w-24 px-3 py-2 rounded-lg bg-[#1e3a6e] text-[#e5e5e5] border border-white/10 focus:border-[#fca311]/40 focus:outline-none tabular-nums"
           value={temperature.celsius}
           onChange={updateFahrenheit}
         />
-        Celsius
-      </p>
-      <p className="text-light">&dArr;</p>
-      <p className="text-light">
+        <span className="text-[#e5e5e5]/70 text-sm">Celsius</span>
+      </label>
+      <span className="text-[#fca311]/50 text-lg">⇕</span>
+      <label className="flex items-center gap-3">
         <input
           type="number"
-          className="w-full px-3 py-1.5 text-blue bg-light border-none rounded-[10px]"
+          className="w-24 px-3 py-2 rounded-lg bg-[#1e3a6e] text-[#e5e5e5] border border-white/10 focus:border-[#fca311]/40 focus:outline-none tabular-nums"
           value={temperature.fahrenheit}
           onChange={updateCelsius}
         />
-        Fahrenheit
-      </p>
-    </>
+        <span className="text-[#e5e5e5]/70 text-sm">Fahrenheit</span>
+      </label>
+    </div>
   );
 }
 
 export default function ConverterApp() {
-  return (
-    <div className="flex flex-col gap-2.5 items-center">
-      <Converter />
-    </div>
-  );
+  return <Converter />;
 }

@@ -1,14 +1,14 @@
 export default function Navbar({ task }: { task: string }) {
   return (
-    <nav className="w-full flex items-center justify-between px-8 py-4 bg-blue">
+    <nav className="w-full flex items-center justify-between px-8 py-4 bg-[#14213d] border-b border-white/5">
       <a
         href="/"
-        className="text-light italic no-underline hover:underline text-lg"
+        className="flex items-center gap-2 text-[#e5e5e5]/60 hover:text-[#fca311] no-underline transition-colors duration-200 text-sm"
       >
-        &#8656; Back
+        ← Back
       </a>
-      <span className="text-orange text-2xl italic font-serif">{task}</span>
-      <span className="text-orange text-xl font-serif font-bold">7GUIs</span>
+      <span className="text-[#fca311] text-xl font-semibold tracking-wide">{task}</span>
+      <span className="text-[#e5e5e5]/30 text-sm font-mono">7GUIs</span>
     </nav>
   );
 }

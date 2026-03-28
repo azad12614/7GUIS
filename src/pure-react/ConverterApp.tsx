@@ -21,15 +21,15 @@ const ShowCelsius = () => {
   };
 
   return (
-    <p className="text-light">
+    <label className="flex items-center gap-3">
       <input
         type="number"
-        className="w-full px-3 py-1.5 text-blue bg-light border-none rounded-[10px]"
+        className="w-24 px-3 py-2 rounded-lg bg-[#1e3a6e] text-[#e5e5e5] border border-white/10 focus:border-[#fca311]/40 focus:outline-none tabular-nums"
         value={celsius}
         onChange={updateFahrenheit}
       />
-      Celsius
-    </p>
+      <span className="text-[#e5e5e5]/70 text-sm">Celsius</span>
+    </label>
   );
 };
 
@@ -53,25 +53,23 @@ const ShowFahrenheit = () => {
   };
 
   return (
-    <>
-      <p className="text-light">
-        <input
-          type="number"
-          className="w-full px-3 py-1.5 text-blue bg-light border-none rounded-[10px]"
-          value={fahrenheit}
-          onChange={updateCelsius}
-        />
-        Fahrenheit
-      </p>
-    </>
+    <label className="flex items-center gap-3">
+      <input
+        type="number"
+        className="w-24 px-3 py-2 rounded-lg bg-[#1e3a6e] text-[#e5e5e5] border border-white/10 focus:border-[#fca311]/40 focus:outline-none tabular-nums"
+        value={fahrenheit}
+        onChange={updateCelsius}
+      />
+      <span className="text-[#e5e5e5]/70 text-sm">Fahrenheit</span>
+    </label>
   );
 };
 
 export default function ConverterApp() {
   return (
-    <div className="flex flex-col gap-2.5 items-center">
+    <div className="flex flex-col gap-4 items-center">
       <ShowCelsius />
-      <p className="text-light">&dArr;</p>
+      <span className="text-[#fca311]/50 text-lg">⇕</span>
       <ShowFahrenheit />
     </div>
   );

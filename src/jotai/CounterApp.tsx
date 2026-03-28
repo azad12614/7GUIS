@@ -4,16 +4,16 @@ import { counterAtom } from "../shared/atoms";
 function Display() {
   const [counter] = useAtom(counterAtom);
 
-  return <div className="text-[2em] font-bold text-orange">{counter}</div>;
+  return <span className="text-5xl font-bold text-[#fca311] tabular-nums">{counter}</span>;
 }
 
-function Button() {
+function CountButton() {
   const setCounter = useSetAtom(counterAtom);
 
   return (
     <button
-      className="px-3 py-1.5 text-blue bg-light border-none rounded-[5px] cursor-pointer disabled:text-black disabled:bg-gray-400"
       onClick={() => setCounter((prev) => prev + 1)}
+      className="px-4 py-2 rounded-lg bg-[#1e3a6e] text-[#e5e5e5] border border-white/10 hover:bg-[#254d94] hover:border-[#fca311]/40 hover:text-[#fca311] transition-all duration-200 cursor-pointer"
     >
       Count
     </button>
@@ -22,9 +22,9 @@ function Button() {
 
 export default function CounterApp() {
   return (
-    <div className="flex flex-row gap-5 items-center justify-center">
+    <div className="flex flex-col gap-5 items-center">
       <Display />
-      <Button />
+      <CountButton />
     </div>
   );
 }
