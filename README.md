@@ -1,75 +1,55 @@
-# React + TypeScript + Vite
+# 7GUIs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains implementations of the [7GUIs](https://eugenkiss.github.io/7guis/) benchmark in React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+The app starts on a launcher page that links to the individual task pages in `src/html/`. The codebase also includes multiple implementation styles for the same benchmark set:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `src/react/` for the React-based versions
+- `src/pure-react/` for the minimal React versions
+- `src/jotai/` for the state-management versions
+- `src/main/` for the task-specific entry points
+- `src/shared/` for shared types, validation, store helpers, and navigation
 
-## React Compiler
+## Tasks
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+The benchmark tasks in this workspace are:
 
-Note: This will impact Vite dev & build performances.
+1. Counter
+2. Converter
+3. Flight
+4. Timer
+5. CRUD
+6. Circle
+7. Cells
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Install dependencies and run the dev server:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Useful scripts:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
+npm run lint
+npm run preview
 ```
+
+## Tech Stack
+
+- React 19
+- TypeScript
+- Vite
+- Jotai
+- HeroUI
+- Zod
+
+## Notes
+
+- The root page is defined in `src/App.tsx`.
+- Shared UI and helpers live in `src/shared/`.
+- The project uses a modern Vite + ESLint setup from the template, with React Compiler support enabled in the toolchain.
