@@ -1,28 +1,33 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { Card } from "@heroui/react";
 import "../global.css";
 import Navbar from "../shared/Navbar.tsx";
 import CurrentApp from "../react/FlightApp.tsx";
 import PureReactApp from "../pure-react/FlightApp.tsx";
 import JotaiApp from "../jotai/FlightApp.tsx";
 
-function Card({ title, impl }: { title: string; impl: React.ReactNode }) {
+function ImplCard({ title, impl }: { title: string; impl: React.ReactNode }) {
   return (
-    <div className="flex flex-col gap-3 bg-blue rounded-[20px] p-5 min-w-[200px] items-center">
-      <h2 className="text-orange text-xl">{title}</h2>
-      {impl}
-    </div>
+    <Card className="bg-[#14213d] border border-white/5 min-w-[220px]">
+      <Card.Header>
+        <Card.Title className="text-[#fca311] text-center w-full">{title}</Card.Title>
+      </Card.Header>
+      <Card.Content className="flex items-center justify-center py-6">
+        {impl}
+      </Card.Content>
+    </Card>
   );
 }
 
-function Page() {
+export function Page() {
   return (
-    <div className="min-h-screen bg-black text-light font-serif flex flex-col items-center gap-8">
+    <div className="min-h-screen bg-black text-[#e5e5e5] font-serif flex flex-col items-center gap-12">
       <Navbar task="Flight Booker" />
-      <div className="flex flex-col gap-6 items-center">
-        <Card title="React" impl={<CurrentApp />} />
-        <Card title="Pure React" impl={<PureReactApp />} />
-        <Card title="Jotai" impl={<JotaiApp />} />
+      <div className="flex flex-row gap-6 items-stretch flex-wrap justify-center">
+        <ImplCard title="React" impl={<CurrentApp />} />
+        <ImplCard title="Pure React" impl={<PureReactApp />} />
+        <ImplCard title="Jotai" impl={<JotaiApp />} />
       </div>
     </div>
   );
